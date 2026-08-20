@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" fill="#000"/>
+  <!-- A shape with star -->
+  <path d="M32 8L48 52H38L32 34L26 52H16L32 8Z" fill="#F5F5F0"/>
+  <!-- Four-pointed star at peak -->
+  <path d="M32 6L33.5 10L36 12L33.5 14L32 18L30.5 14L28 12L30.5 10L32 6Z" fill="#F5F5F0"/>
+</svg>
