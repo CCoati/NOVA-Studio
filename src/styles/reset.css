@@ -1,9 +1,10 @@
-/* ============================================
-   NOVA STUDIO — CSS RESET
-   Modern reset for consistent rendering
-   ============================================ */
+/* ==========================================================================
+   NOVA STUDIO — CSS RESET & BASE NORMALIZATION
+   ========================================================================== */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -11,30 +12,39 @@
 
 html {
   scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  text-size-adjust: 100%;
+  background-color: var(--bg-black);
+  color: var(--text-offwhite);
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
 body {
+  background-color: var(--bg-black);
+  color: var(--text-offwhite);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
   min-height: 100vh;
-  line-height: var(--leading-normal);
 }
 
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
 
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
   color: inherit;
-  border: none;
-  background: none;
-  outline: none;
 }
 
 button {
@@ -46,25 +56,7 @@ a {
   text-decoration: none;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-size: inherit;
-  font-weight: inherit;
-  overflow-wrap: break-word;
-}
-
-p {
-  overflow-wrap: break-word;
-}
-
-#root {
-  isolation: isolate;
-}
-
-::selection {
-  background: rgba(255, 255, 255, 0.15);
-  color: var(--white);
 }

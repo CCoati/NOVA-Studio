@@ -1,9 +1,45 @@
-/* ============================================
-   NOVA STUDIO — ANIMATION SYSTEM
-   Keyframes + scroll-reveal utility classes
-   ============================================ */
+/* ==========================================================================
+   NOVA STUDIO — ANIMATION SYSTEM & KEYFRAMES
+   ========================================================================== */
 
-/* ---- Keyframes ---- */
+/* Keyframe Animations */
+@keyframes pulseDot {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes starTwinkle {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.18) rotate(12deg);
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes marqueeAnim {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -20,59 +56,6 @@
   to { opacity: 1; }
 }
 
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.92);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes clipRevealUp {
-  from {
-    clip-path: inset(100% 0 0 0);
-    transform: translateY(20px);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-    transform: translateY(0);
-  }
-}
-
-@keyframes lineReveal {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
-  }
-}
-
 @keyframes float {
   0%, 100% {
     transform: translateY(0);
@@ -82,41 +65,24 @@
   }
 }
 
-@keyframes pulse {
-  0%, 100% {
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 1;
-  }
+/* Scroll Reveal Classes */
+.reveal-elem {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+  will-change: opacity, transform;
 }
 
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.reveal-elem.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-/* ---- Scroll Reveal Classes ---- */
-/* Elements with these classes start hidden and animate in when .is-visible is added */
 
 .reveal {
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity var(--duration-reveal) var(--ease-out-expo),
-              transform var(--duration-reveal) var(--ease-out-expo);
+  transition: opacity var(--duration-reveal, 1.2s) var(--ease-out-expo),
+              transform var(--duration-reveal, 1.2s) var(--ease-out-expo);
   will-change: opacity, transform;
 }
 
@@ -125,75 +91,16 @@
   transform: translateY(0);
 }
 
-.reveal--left {
-  opacity: 0;
-  transform: translateX(-40px);
-  transition: opacity var(--duration-reveal) var(--ease-out-expo),
-              transform var(--duration-reveal) var(--ease-out-expo);
-  will-change: opacity, transform;
-}
-
-.reveal--left.is-visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.reveal--right {
-  opacity: 0;
-  transform: translateX(40px);
-  transition: opacity var(--duration-reveal) var(--ease-out-expo),
-              transform var(--duration-reveal) var(--ease-out-expo);
-  will-change: opacity, transform;
-}
-
-.reveal--right.is-visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.reveal--scale {
-  opacity: 0;
-  transform: scale(0.92);
-  transition: opacity var(--duration-reveal) var(--ease-out-expo),
-              transform var(--duration-reveal) var(--ease-out-expo);
-  will-change: opacity, transform;
-}
-
-.reveal--scale.is-visible {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.reveal--clip {
-  clip-path: inset(100% 0 0 0);
-  transition: clip-path var(--duration-reveal) var(--ease-out-expo);
-  will-change: clip-path;
-}
-
-.reveal--clip.is-visible {
-  clip-path: inset(0 0 0 0);
-}
-
-/* ---- Stagger delays ---- */
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.2s; }
-.delay-3 { transition-delay: 0.3s; }
-.delay-4 { transition-delay: 0.4s; }
-.delay-5 { transition-delay: 0.5s; }
-.delay-6 { transition-delay: 0.6s; }
-.delay-7 { transition-delay: 0.7s; }
-.delay-8 { transition-delay: 0.8s; }
-
-/* ---- Reduce motion ---- */
+/* Prefers Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  .reveal,
-  .reveal--left,
-  .reveal--right,
-  .reveal--scale,
-  .reveal--clip {
-    opacity: 1;
-    transform: none;
-    clip-path: none;
-    transition: none;
+  .reveal-elem,
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  
+  .marquee-track {
+    animation: none !important;
   }
 }
